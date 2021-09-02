@@ -1,0 +1,43 @@
+WIP App Name: Grocer-E
+
+As a... shopper who is the head-of-household
+
+I want... a grocery list app that allows me to keep track of the items I need and allow family members to collaborate and add their wanted items as well
+
+So that... grocery shopping for the family can be collaborative, all inclusive, and simplified
+
+---
+
+Dashboard
+Wishlist
+Commonly bought items?
+Recipes with items in cart
+Product options by category
+Navbar
+Searchbar up top
+Price comparison
+How will user share/collaborate on list
+Quick add 
+
+
+Mobile-Based -
+Open up -> Dashboard
+Searchbar up top -> autocomplete
+-Input search (not everything just those select items)
+Categories on the side also
+List of items pops - Price, Image, Nutritional?)
+-select and add to list
+-select quantity
+Side node that shows current groceries
+If user types in item we do not have - an error or 'item not available' appears
+
+Email/Phone Number to add someone else onto List
+When they add an item, their name/image is attached to their items
+Main user will be able to delete their items
+
+Recipes Suggestion in Navbar
+-based on what items you have in your list
+
+
+
+
