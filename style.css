@@ -16,4 +16,27 @@
 
 4)Email/Phone Number to add family member onto list
     -When they add an item, their name/image is attached to their items
-    -Main user will be able to delete/edit their items 
+    -Main user will be able to delete/edit their items */
+
+/* Log-In Page*/
+
+h2 {
+  color: green;
+}
+
+body {
+  background: white;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+label {
+  color: green;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 18px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+}
