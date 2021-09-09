@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css"
-    <title></title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css"
+    <title></title>
 
     <title>Grocer-E</title>
 
@@ -35,8 +37,66 @@
 
 <body>
     <header></header>
-        <nav></nav>
-            <sidenav></sidenav>
+
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo center">Grocer-E</a>
+        <ul class="left hide-on-med-and-down">
+          <li><a href="#">List</a></li>
+          <li><a href="#">Recipes</a></li>
+          <form action="" class="browser-default right">
+       <form action="" class="browser-default right">
+        <input id="search-input" placeholder="Search" type="text" class="browser-default search-field" name="q" value="" autocomplete="off" aria-label="Search box">
+        </ul>
+      </div>
+      
+    </nav>
+    <ul id="slide-out" class="sidenav">
+        <li><div class="user-view">
+        </li>
+        <li><a href="currentlist.html"><i class="material-icons">local_grocery_store</i>Current Shopping List</a></li>
+        <li><a href="#!"><i class="material-icons">person</i>Family</a></li>
+        <li><a href="#!"><i class="material-icons">person_add</i>Add Family Member</a></li>
+      </ul>
+      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="small material-icons">menu</i></a>
+      <div class="container center">
+        <a href="#login" class="btn btn-large teal modal-trigger">Login</a>
+      </div>
+      
+      <div id="login" class="modal">
+        <h5 class="modal-close">&#10005;</h5>
+        <div class="modal-content center">
+          <h4>Login Form</h4>
+          <br>
+      
+          <form action="#">
+      
+            <div class="input-field">
+              <i class="material-icons prefix">person</i>
+              <input type="text" id="name">
+              <label for="name">Username</label>
+            </div>
+            <br>
+      
+            <div class="input-field">
+              <i class="material-icons prefix">lock</i>
+              <input type="password" id="pass">
+              <label for="pass">Password</label>
+            </div>
+            <br>
+      
+            <div class="left" style="margin-left:20px;">
+              <input type="checkbox" id="check">
+              <label for="check">Remember Me</label>
+            </div>
+            <br>
+            
+            <input type="submit" value="Login" class="btn btn-large">
+            
+          </form>
+        </div>
+        </div>
+ 
 
     <!--DASHBOARD-->
                 <!--USERNAME SECTION-->

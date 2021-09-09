@@ -22,3 +22,11 @@
     -When they add an item, their name/image is attached to their items
     -Main user will be able to delete/edit their items 
 */
+
+$(document).ready(function(){
+    $('.sidenav').sidenav()
+});
+$(document).ready(function(){
+    $('.modal').modal();
+});
+
