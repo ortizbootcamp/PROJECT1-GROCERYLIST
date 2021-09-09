@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css"
+    <title></title>
+
     <title>Grocer-E</title>
+
 <!--
     1) Dashboard & Login Page
     -Username
@@ -19,8 +24,8 @@
     -Search (Navbar)
      >Autocomplete
      >User Input
-     >If user types in item we do not have, 'item not available' appears
-
+     >If user types in item we do not have, 'item not available' appear
+     
     3) Recipe suggestion in Navbar
     -based on what items you have in your list
 
@@ -32,6 +37,7 @@
 
 <body>
     <header></header>
+
     <nav>
       <div class="nav-wrapper">
         <a href="#!" class="brand-logo center">Grocer-E</a>
@@ -89,10 +95,43 @@
             
           </form>
         </div>
-      </div>
+        </div>
+ 
+
     <!--DASHBOARD-->
+                <!--USERNAME SECTION-->
+                <section id="username"></section>
+                    <!--CONNECTED USERS-->
+                    <section id="otherusers"></section>
+                        <!--BASIC/FAVORITED ITEMS(eggs, milk, etc.)-->
+                        <section id="favitems"></section>
+                            <!--FAVORITED RECIPES-->
+  
+                            <div class="dropdown">
+                                <button class="dropbtn" Recipes></button>
+                            <div class="dropdown-content">
+                                <a href="#">Link 1</a>
+                                <a href="#">Link 2</a>
+                                <a href="#">Link 3</a>
+                            </div>
+  </div>
+                                <!--CREATE NEW LIST BUTTON-->
+                                <button id="newlibtn" class="btn"></button>
+                                    <!--PAST LISTS-->
+                                    <section id="pastli"></section>
+    <!--DASHBOARD-->
+
+<!--Shopping Page-->
+<section id="groceries">
+    <img id="productimg">
+    <content>
+        <li id="price"></li>
+        <li id=""></li>
+    </content>
+</section>
+
 <script src="script.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 
 </html>

@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-    
-=======
 /* 
  1) Dashboard & Login Page
     -Username
@@ -15,10 +12,74 @@
      >User Input
      >If user types in item we do not have, 'item not available' appears
 
-3) Recipe suggestion in Navbar
-    -based on what items you have in your list
 
-4)Email/Phone Number to add family member onto list
+
+        4)Email/Phone Number to add family member onto list
     -When they add an item, their name/image is attached to their items
+
     -Main user will be able to delete/edit their items 
->>>>>>> c65d8d60c78c8687794c36c027d0b04c74b9c9d7
+
+    -Main user will be able to delete/edit their items */
+
+/* Log-In Page*/
+/*h2 {
+  color: green;
+}
+
+body {
+  background: white;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+label {
+  color: green;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 18px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+}*/
+
+/*3) Recipe suggestion in Navbar
+    -based on what items you have in your list*/
+    .dropdown .dropbtn {
+      font-size: 16px;
+      border: none;
+      color: white;
+      padding: 14px 16px;
+      background-color: inherit;
+      font-family: inherit;
+      margin: 0;
+    }
+
+      .nav a:hover, .dropdown:hover .dropbtn {
+        background-color: green;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 160px;
+        box-shadow: 0 px, 8px, 16px, 0px;
+      }
+
+        .dropdown-content a {
+          float: none;
+          color: black;
+          padding: 12px 16px;
+          display: block;
+          text-align: left;
+        }
+
+          .dropdown-content a:hover {
+            background-color: grey;
+          }
+
+          .dropdown:hover .dropdown-content {
+            display:block;
+          }
+
