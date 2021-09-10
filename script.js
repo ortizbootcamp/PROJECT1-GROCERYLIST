@@ -25,9 +25,9 @@ $(document).ready(function(){
 $(document).ready(function(){
     $('input.autocomplete').autocomplete({
       data: {
-        "Apple": null,
-        "Microsoft": null,
-        "Google": null,
+        "Apples": null,
+        "Oranges": null,
+        "Bananas": null,
       },
     });
   });
