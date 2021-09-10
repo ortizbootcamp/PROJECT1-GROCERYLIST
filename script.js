@@ -23,9 +23,11 @@ $(document).ready(function(){
     $('.sidenav').sidenav()
 });
 $(document).ready(function(){
-    $('.modal').modal();
-});
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(elems, options);
+    $('input.autocomplete').autocomplete({
+      data: {
+        "Apple": null,
+        "Microsoft": null,
+        "Google": null,
+      },
+    });
   });

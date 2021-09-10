@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./style.css"
     <title></title>
@@ -53,20 +54,17 @@
           <li><a href="#">Recipes</a></li>
           <form action="" class="browser-default right">
        <form action="" class="browser-default right">
-        <li>    
-          <div class="center row">
-             <div class="col s12 " >
-               <div class="row" id="topbarsearch">
-                 <div class="input-field col s6 s12">
-                   <i class="material-icons prefix">search</i>
-                   <input type="text" placeholder="Search" id="autocomplete-input" class="autocomplete" >
-                   </div>
-                 </div>
-               </div>
-             </div>          
-         </li> 
-        </ul>
-      </div>
+        <div class="row">
+          <div class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">search</i>
+                <input type="text" id="autocomplete-input" class="autocomplete">
+                <label for="autocomplete-input">Search</label>
+              </div>
+            </div>
+          </div>
+        </div>
       
     </nav>
 
