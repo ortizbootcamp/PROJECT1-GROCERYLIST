@@ -3,7 +3,6 @@
     -Username
     -Password
 
-
 2) Navbar, Sidenav & Search
     -List of current groceries (sidenav)
     -Categories of groceries (Sidenav)
@@ -14,9 +13,6 @@
 
 3) Recipe suggestion in Navbar
     -based on what items you have in your list
-    section id- favrecipes 
-    
-
 
 4)Email/Phone Number to add family member onto list
     -When they add an item, their name/image is attached to their items
@@ -29,4 +25,7 @@ $(document).ready(function(){
 $(document).ready(function(){
     $('.modal').modal();
 });
-
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init(elems, options);
+  });
