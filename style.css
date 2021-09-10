@@ -1,9 +1,7 @@
-
 /* 
  1) Dashboard & Login Page
     -Username
     -Password
-
 2) Navbar, Sidenav & Search
     -List of current groceries (sidenav)
     -Categories of groceries (Sidenav)
@@ -11,33 +9,25 @@
      >Autocomplete
      >User Input
      >If user types in item we do not have, 'item not available' appears
-
-
-
         4)Email/Phone Number to add family member onto list
     -When they add an item, their name/image is attached to their items
-
     -Main user will be able to delete/edit their items 
-
     -Main user will be able to delete/edit their items */
 
 /* Log-In Page*/
 /*h2 {
   color: green;
 }
-
 body {
   background: white;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
-
 label {
   color: green;
   font-weight: bold;
   display: inline-block;
   font-size: 18px;
 }
-
 input[type="text"],
 input[type="password"] {
   width: 100%;
@@ -45,6 +35,14 @@ input[type="password"] {
 
 /*3) Recipe suggestion in Navbar
     -based on what items you have in your list*/
+
+
+#groceries > .card-panel {
+  margin: 10px;
+}
+
+
+
     .dropdown .dropbtn {
       font-size: 16px;
       border: none;
@@ -82,4 +80,3 @@ input[type="password"] {
           .dropdown:hover .dropdown-content {
             display:block;
           }
-

@@ -6,10 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css"
-    <title></title>
+    <link rel="stylesheet" href="./style.css">
 
     <title>Grocer-E</title>
 
@@ -17,7 +15,6 @@
     1) Dashboard & Login Page
     -Username
     -Password
-
     2) Navbar, Sidenav & Search
     -List of current groceries (sidenav)
     -Categories of groceries (Sidenav)
@@ -28,7 +25,6 @@
      
     3) Recipe suggestion in Navbar
     -based on what items you have in your list
-
     4)Email/Phone Number to add family member onto list
     -When they add an item, their name/image is attached to their items
     -Main user will be able to delete/edit their items 
@@ -36,12 +32,11 @@
 </head>
 
 <body>
-    <header></header>
-
+<!--NAV/HEADER-->
     <nav>
       <div class="nav-wrapper">
         <a href="#!" class="brand-logo center">Grocer-E</a>
-        <ul class="left hide-on-med-and-down">
+        <ul class="left">
           <li><a href="#">List</a></li>
           <li><a href="#">Recipes</a></li>
           <form action="" class="browser-default right">
@@ -49,21 +44,23 @@
         <input id="search-input" placeholder="Search" type="text" class="browser-default search-field" name="q" value="" autocomplete="off" aria-label="Search box">
         </ul>
       </div>
-      
     </nav>
+<!--NAV-->
+
+<!--SIDENAV-->
     <ul id="slide-out" class="sidenav">
-        <li><div class="user-view">
-        </li>
+        <li><div class="user-view"></li>
         <li><a href="currentlist.html"><i class="material-icons">local_grocery_store</i>Current Shopping List</a></li>
         <li><a href="#!"><i class="material-icons">person</i>Family</a></li>
         <li><a href="#!"><i class="material-icons">person_add</i>Add Family Member</a></li>
       </ul>
-      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="small material-icons">menu</i></a>
-      <div class="container center">
+      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+<!-- <div class="container center">
         <a href="#login" class="btn btn-large teal modal-trigger">Login</a>
-      </div>
-      
-      <div id="login" class="modal">
+      </div>-->
+<!--SIDENAV-->
+
+<!-- <div id="login" class="modal">
         <h5 class="modal-close">&#10005;</h5>
         <div class="modal-content center">
           <h4>Login Form</h4>
@@ -96,41 +93,73 @@
           </form>
         </div>
         </div>
- 
+-->
 
-    <!--DASHBOARD-->
-                <!--USERNAME SECTION-->
-                <section id="username"></section>
-                    <!--CONNECTED USERS-->
-                    <section id="otherusers"></section>
-                        <!--BASIC/FAVORITED ITEMS(eggs, milk, etc.)-->
-                        <section id="favitems"></section>
-                            <!--FAVORITED RECIPES-->
+<!--FAVORITED RECIPES(THIS WILL BE MOVED INTO NAVBAR)
   
-                            <div class="dropdown">
-                                <button class="dropbtn" Recipes></button>
+<div class="dropdown">
+                                <button class="dropbtn btn">RECIPES</button>
                             <div class="dropdown-content">
                                 <a href="#">Link 1</a>
                                 <a href="#">Link 2</a>
                                 <a href="#">Link 3</a>
                             </div>
-  </div>
-                                <!--CREATE NEW LIST BUTTON-->
-                                <button id="newlibtn" class="btn"></button>
-                                    <!--PAST LISTS-->
-                                    <section id="pastli"></section>
-    <!--DASHBOARD-->
+</div>
+-->
 
-<!--Shopping Page-->
-<section id="groceries">
-    <img id="productimg">
-    <content>
-        <li id="price"></li>
-        <li id=""></li>
-    </content>
+    <!--CREATE NEW LIST BUTTON(may move into nav or sidenav)
+    <button id="newlibtn" class="btn">CREATE NEW LIST</button> 
+-->
+
+<!--DASHBOARD-->        
+<div class="container">
+  <div class="row">
+
+    <!--Shopping Page-->
+    
+<section id="pcategory" class="left-align">
+  <h3>CATEGORY</h3>
 </section>
 
-<script src="script.js"></script>
+<section id="groceries" class="col s12 center-align">
+
+  <div class="card-panel hoverable col s3">
+    <content>
+    <img id="productimg responsive-img" src="">
+      <ul>
+        <li id="name"></li>
+        <li id="price"></li>
+      </ul>
+    </content>
+  </div>
+
+  <div class="card-panel hoverable col s3">
+    <img id="productimg responsive-img" src="">
+    <content>
+      <ul>
+        <li id="name"></li>
+        <li id="price"></li>
+      </ul>
+    </content>
+  </div>
+
+  <div class="card-panel hoverable col s3">
+    <img id="productimg responsive-img" src="">
+    <content>
+      <ul>
+        <li id="name"></li>
+        <li id="price"></li>
+      </ul>
+    </content>
+  </div>
+  
+</section>
+</div>
+</div>
+<!--DASHBOARD-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="./script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 
