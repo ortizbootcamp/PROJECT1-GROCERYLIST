@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css"
-    <title></title>
+    <link rel="stylesheet" href="./style.css">
 
     <title>Grocer-E</title>
 
@@ -18,7 +15,6 @@
     1) Dashboard & Login Page
     -Username
     -Password
-
     2) Navbar, Sidenav & Search
     -List of current groceries (sidenav)
     -Categories of groceries (Sidenav)
@@ -29,7 +25,6 @@
      
     3) Recipe suggestion in Navbar
     -based on what items you have in your list
-
     4)Email/Phone Number to add family member onto list
     -When they add an item, their name/image is attached to their items
     -Main user will be able to delete/edit their items 
@@ -37,39 +32,103 @@
 </head>
 
 <body>
-    <header></header>
-    <ul id="slide-out" class="sidenav">
-        <li><div class="user-view">
-        </li>
-        <li><a href="#"><i class="material-icons">local_grocery_store</i>Current Shopping List</a></li>
+<!--NAV/HEADER-->
+<!--SIDENAV-->
+
+<!--SIDENAV-->    
+
+<nav>
+    <ul id="slide-out" class="sidenav right">
+        <li><div class="user-view"></li>
+        <li><a href="#"><i class="material-icons">local_grocery_store</i>Shopping List</a></li>
       </ul>
-      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="small material-icons">menu</i></a>
-      
-    <nav>
-      
-      <div class="nav-wrapper">
-        <a href="#!" class="brand-logo center">Grocer-E</a>
-        <ul class="left hide-on-med-and-down">
-          <li><a href="#">List</a></li>
-          <li><a href="#">Recipes</a></li>
-          <form action="" class="browser-default right">
-       <form action="" class="browser-default right">
-        <div class="row">
-          <div class="col s12">
-            <div class="row">
-              <div class="input-field col s12">
-                <i class="material-icons prefix">search</i>
-                <input type="text" id="autocomplete-input" class="autocomplete">
-                <label for="autocomplete-input">Search</label>
-              </div>
-            </div>
-          </div>
+      <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
+  <div class=“nav-wrapper”>
+    <a href="index.html" class="brand-logo center">Grocer-E</a>
+            <li><a class="dropdown-trigger left" id="recipe-button" data-target="dropdown1">Recipes<i class="material-icons right">arrow_drop_down</i></a></li>
+              <div class="container-fluid">
+              <div id= "recipe-info">
+              
+          </ul>
         </div>
+      </nav>
+    </div>
+<!--NAV-->
+      <ul id="dropdown1" class="dropdown-content">
+        <li><a href="#!">one</a></li>
+        <li><a href="#!">two</a></li>
+        <li class="divider"></li>
+        <li><div id="img"></div></li>
+      </ul>
       
-    </nav>
 
+<!--FAVORITED RECIPES(THIS WILL BE MOVED INTO NAVBAR)
+  
+<div class="dropdown">
+                                <button class="dropbtn btn">RECIPES</button>
+                            <div class="dropdown-content">
+                                <a href="#">Link 1</a>
+                                <a href="#">Link 2</a>
+                                <a href="#">Link 3</a>
+                            </div>
+</div>
+-->
 
-<script src="script.js"></script>
+    <!--CREATE NEW LIST BUTTON(may move into nav or sidenav)
+    <button id="newlibtn" class="btn">CREATE NEW LIST</button> 
+-->
+
+<!--DASHBOARD-->        
+<div class="container">
+  <div class="row">
+
+    <!--Shopping Page-->
+    
+<section id="pcategory" class="left-align">
+  <h3>CATEGORY</h3>
+</section>
+
+<section id="groceries" class="col s12 center-align">
+
+  <div class="card-panel hoverable col s3">
+    <content>
+    <img id="productimg responsive-img" src="">
+      <ul>
+        <li id="name"></li>
+        <li id="price"></li>
+      </ul>
+    </content>
+  </div>
+
+  <div class="card-panel hoverable col s3">
+    <img id="productimg responsive-img" src="">
+    <content>
+      <ul>
+        <li id="name"></li>
+        <li id="price"></li>
+      </ul>
+    </content>
+  </div>
+
+<div class="card-panel hoverable col s3">
+    <img id="productimg responsive-img" src="">
+    <content>
+      <ul>
+        <li id="name"></li>
+        <li id="price"></li>
+      </ul>
+    </content>
+  </div>
+  <div id="recipe-info">
+    </div>
+</div>
+</div>
+<!--DASHBOARD-->
+
+  
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="./script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 
