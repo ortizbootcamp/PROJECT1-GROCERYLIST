@@ -42,22 +42,24 @@ $(document).ready(function(){
 $(document).ready(function(){
   $(".dropdown-button").dropdown();
 })
-var acInput = $(".search-input").text();
-$(function () {
-  $.ajax({
-      type: 'GET', 
-      url: "https://api.spoonacular.com/food/menuItems/search?apiKey=e1db73aa4c2649c49d537bb9ba5edfc6&query=" + acInput,
-      success: function (response) {
-          var myArray = $.parseJSON(response);
-          var dataAC = {};
-          for(var i=0;i<myArray[0].length;i++){
-              eval("dataAC." + myArray[0][i] + " = null;");
-          }
-          debugger;
-          $('#autocomplete-input').autocomplete({
-              data: dataAC
-          });
+  var acInput = $(".autocomplete-input").text();
+$(document).ready(function() {
+  $(function() {
+    $.ajax({
+      type: 'GET',
+      url: "https://api.spoonacular.com/food/products/search?apiKey=e1db73aa4c2649c49d537bb9ba5edfc6&query=number=1" + acInput,
+      success: function(response) {
+
+        var foodArray = response;
+        var foodList = {};
+        for (var i = 0; i < foodArray.length; i++) {
+          foodList[foodArray[i].name] = foodArray[i];
+        }
+        $('input.autocomplete').autocomplete({
+          data: foodList
+        });
       }
+    });
   });
 });
 
@@ -218,3 +220,10 @@ var groceryList = (function(){
 load 
 
 })
+var input = document.getElementById("autocomplete-input");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("searchbtn").click();
+  }
+});
