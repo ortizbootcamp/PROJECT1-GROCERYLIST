@@ -43,25 +43,49 @@ $(document).ready(function(){
   $(".dropdown-button").dropdown();
 })
   var acInput = $(".autocomplete-input").text();
-$(document).ready(function() {
-  $(function() {
-    $.ajax({
-      type: 'GET',
-      url: "https://api.spoonacular.com/food/products/search?apiKey=e1db73aa4c2649c49d537bb9ba5edfc6&query=number=1" + acInput,
-      success: function(response) {
-
-        var foodArray = response;
-        var foodList = {};
-        for (var i = 0; i < foodArray.length; i++) {
-          foodList[foodArray[i].name] = foodArray[i];
-        }
-        $('input.autocomplete').autocomplete({
-          data: foodList
-        });
-      }
+  $(document).ready(function(){
+    $('input.autocomplete').autocomplete({
+      data: {
+        "Apples": null,
+        "Bananas": null,
+        "Pasta": null,
+        "Pizza": null,
+        "Oranges": null,
+        "Grapes": null,
+        "Tacos": null,
+        "Mac N Cheese": null,
+        "Burrito": null,
+        "Milk": null,
+        "Bread": null,
+        "Cookies": null,
+        "Broccoli": null,
+        "Carrots": null,
+        "Peas": null,
+        "Spinach": null,
+        "Beef": null,
+        "Chicken": null,
+        "Pork": null,
+        "Fish": null,
+        "Potatoes": null,
+        "Pineapple": null,
+        "Pie": null,
+        "Cake": null,
+        "Peanut Butter": null,
+        "Cheese": null,
+        "Tomatoes": null,
+        "Beans": null,
+        "Raspberries": null,
+        "Blackberries": null,
+        "Kiwi": null,
+        "Yogurt": null,
+        "Candy": null,
+        "Cereal": null,
+        "Eggs": null,
+        "Cashews": null,
+      },
+      limit: 3,
     });
   });
-});
 
 var button = document.getElementById("recipe-button");
 button.addEventListener("click", function () {
