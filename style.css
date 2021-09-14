@@ -82,3 +82,13 @@ input[type="password"] {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+#recipe-button {
+  position: relative;
+}
+#recipe {
+  position: absolute;
+  top: 64px;
+  left: 5px;
+  height: 500px;
+  overflow-y: scroll;
+}

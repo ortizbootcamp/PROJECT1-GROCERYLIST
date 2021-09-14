@@ -42,16 +42,24 @@ $(document).ready(function(){
 $(document).ready(function(){
   $(".dropdown-button").dropdown();
 })
-
-$(document).ready(function(){
-    $('input.autocomplete').autocomplete({
-      data: {
-        "Apples": null,
-        "Bananas": null,
-        "Oranges": null,
-      },
-    });
+var acInput = $(".search-input").text();
+$(function () {
+  $.ajax({
+      type: 'GET', 
+      url: "https://api.spoonacular.com/food/menuItems/search?apiKey=e1db73aa4c2649c49d537bb9ba5edfc6&query=" + acInput,
+      success: function (response) {
+          var myArray = $.parseJSON(response);
+          var dataAC = {};
+          for(var i=0;i<myArray[0].length;i++){
+              eval("dataAC." + myArray[0][i] + " = null;");
+          }
+          debugger;
+          $('#autocomplete-input').autocomplete({
+              data: dataAC
+          });
+      }
   });
+});
 
 var button = document.getElementById("recipe-button");
 button.addEventListener("click", function () {
@@ -65,17 +73,27 @@ button.addEventListener("click", function () {
     })
     .then(function (result) {
       console.log(result);
+      var randomPicture = []
+      for (let i = 0; i < Math.floor(Math.random() * 11); i++) {
+      randomPicture.push(result.results[i])
+      
+      }
+       console.log(randomPicture)
       //all logic for adding recipes to screen
-      for (let i = 0; i < result.results.length; i++) {
+      var container = document.createElement("div")
+      container.id = "recipe"
+      for (let i = 0; i < 10; i++) {
         var recipe = result.results[i];
         var recipeInfo = document.getElementById("recipe-info");
         var recipeImage = document.createElement("img");
         recipeImage.setAttribute("src", recipe.thumbnail_url);
-        recipeInfo.appendChild(recipeImage);
+        // recipeInfo.appendChild(recipeImage); 
+        container.appendChild(recipeImage)
         recipeImage.style.width = "250px"
         recipeImage.style.height = 'auto'
         recipeImage.style.display = "flex"
       }
+      document.body.appendChild(container)
     })
     .catch(function (err) {
       console.error(err);
@@ -97,6 +115,106 @@ button.addEventListener("click", function () {
 /*API*/
 
 var searchTerm = $("#search-input").val();
-var spoonRequest = "?apiKey=21f5dc0d9fd041aca40b7098e690844d"
-var genSearch = "https://api.spoonacular.com/food/products/search"
+var spoonRequest = "?apiKey=e1db73aa4c2649c49d537bb9ba5edfc6"
+var genSearch = "https://api.spoonacular.com/food/products/search?" + spoonRequest + "&query=" + searchTerm + "&number=21";
+var foodID = "";
+var foodImageRequest = "https://spoonacular.com/productImages/" + foodID + "-90x90.png";
 
+
+/* search button connect*/
+$(".searchbtn").on("click", function (event) {
+
+  searchQuery = $(".search-input").val();
+
+  getSearchInformation(event);
+  event.preventDefault();
+
+})
+
+
+/* click product -> add to list & local storage? */
+$("#product").on("click", function (event) {
+
+  putOnList(event);
+  event.preventDefault();
+
+})
+
+/* function that takes product name and puts it on list in the sidenav, also stores info */
+function putOnList() {
+  $(document).click(function(event){
+    var text = $(event.target).text();
+  })
+
+}
+
+/* API CALL */
+function getSearchInformation() {
+  /* Takes searched item and inputs into API, gets first 21 products */
+  let groceryRequest = "https://api.spoonacular.com/food/products/search" + spoonRequest + "&query=" + searchQuery + "&number=3";
+
+  fetch(groceryRequest)
+  .then(function (response) {
+    return response.json();
+  })
+
+  .then(function (response) {
+   /* Takes responses and picks the IDs out of the response to get their information */
+  for (let i = 0; i < response.products.length; i++) {
+   let productID = response.products[i].id;
+   let getInfo = "https://api.spoonacular.com/food/products/" + productID + spoonRequest;
+
+   fetch(getInfo)
+   .then(function(response) {
+     return response.json();
+   })
+
+   .then(function(response) {
+    /* Takes product information image type and image */
+    let productTitle = response.title;
+    let imgType = response.imageType;
+    let getIMG = "https://spoonacular.com/productImages/" + productID + "-90x90." + imgType;
+
+    /* puts information together to form card */
+
+      let productCard = 
+      `<div id="product" class="card-panel hoverable col s3">
+      <img id="responsive-img" src="${getIMG}">
+      <ul>
+      <li><h6>${productTitle}</h6></li>
+      </ul>
+      </div>
+      `;
+      let div = $("<div>")
+      div.append(productCard)
+      $("#productimg").append(div)
+    
+  })
+
+  }
+  
+})
+}
+
+
+//local storage for current grocery list
+/*grocery items*/
+var item = ""
+
+var groceryList = (function(){
+  var groceryList = []
+
+  function item(name,quantity) {
+    this.name = name
+    this.quantity = quantity
+  }
+  function save () {
+    localStorage.setItem('groceryList', JSON.stringify(groceryList))
+  }
+
+  function load() {
+    groceryList =   JSON.parse(localStorage.getItem(groceryList)) || []
+  }
+load 
+
+})
