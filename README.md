@@ -1,3 +1,4 @@
+<img width="1157" alt="Screen Shot 2021-09-14 at 9 46 58 PM" src="https://user-images.githubusercontent.com/83773208/133362950-57b48ef4-906c-4371-8602-0a40b3ef0ff3.png">
 # PROJECT1-GROCERYLIST
 
 Grocer-E is a simple grocery app where multiple users can add items needed from the grocery store to a single list. Unsure what to make for dinner? This app will generate a random recipe to choose from so that you can view the recipe and ingredients needed so that you can add them to your list all in one place.
