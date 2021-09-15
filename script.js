@@ -87,19 +87,31 @@ button.addEventListener("click", function () {
     .then(function (result) {
       console.log(result);
       //all logic for adding recipes to screen
-      for (let i = 0; i < result.results.length; i++) {
+      var container = document.createElement("div");
+      container.id = "recipe";
+      for (let i = 0; i < 10; i++) {
         var recipe = result.results[i];
-        var recipeInfo = document.getElementById("recipe-info");
+        var recipeLink = document.createElement("a");
+        recipeLink.setAttribute(
+          "href",
+          "https://tasty.co/recipe/" + result.results[i].slug
+        );
+        // var recipeInfo = document.getElementById("recipe-info");
         var recipeImage = document.createElement("img");
         recipeImage.setAttribute("src", recipe.thumbnail_url);
-        recipeInfo.appendChild(recipeImage);
+        //  recipeInfo.appendChild(recipeImage);
+        recipeLink.appendChild(recipeImage);
+        container.appendChild(recipeLink);
+        recipeImage.style.width = "250px";
+        recipeImage.style.height = "auto";
+        recipeImage.style.display = "flex";
       }
+      document.body.appendChild(container);
     })
     .catch(function (err) {
       console.error(err);
     });
 });
-
 
 /* Product API Reference Stuff */
 
