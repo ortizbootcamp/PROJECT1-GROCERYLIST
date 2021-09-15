@@ -23,7 +23,7 @@
       <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
     <div class="nav-wrapper">
     <a href="index.html" class="brand-logo center">Grocer-E</a>
-            <a class="dropdown-button" id="recipe-button" data-activates="dropdown1">Recipes</a>
+            <li><a class="dropdown-trigger left" id="recipe-button" data-target="dropdown1">Recipes<i class="material-icons right">arrow_drop_down</i></a></li>
             <ul id="dropdown1" class="dropdown-content">
               <div class="container-fluid">
               </ul>
@@ -35,11 +35,12 @@
 <!--search-->
 <div class="container">
   <div class="row">
+    
     <div class="row">
       <div class="col s12">
         <div class="row">
-          <div class="input-field col s5 ">
-            <i class="material-icons prefix searchbtn"id="searchbtn">search</i>
+          <div class="input-field col s12">
+            <i class="material-icons prefix searchbtn">search</i>
             <input type="text" id="autocomplete-input" class="autocomplete search-input">
             <label for="autocomplete-input">Search</label>
           </div>
@@ -55,7 +56,6 @@
 
 <!--recipeinfo div-->
 <div id= "recipe-info"></div>
-  
   
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
