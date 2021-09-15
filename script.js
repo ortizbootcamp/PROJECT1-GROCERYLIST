@@ -137,7 +137,8 @@ button.addEventListener("click", function () {
 /* Product API Reference Stuff */
 
 var searchTerm = $(".search-input").val();
-var spoonRequest = "?apiKey=21f5dc0d9fd041aca40b7098e690844d";
+var spoonRequest = "?apiKey=
+";
 var genSearch = "https://api.spoonacular.com/food/products/search?" + spoonRequest + "&query=" + searchTerm + "&number=21";
 var foodID = "";
 var foodImageRequest = "https://spoonacular.com/productImages/" + foodID + "-90x90.png";
@@ -230,7 +231,7 @@ function getSearchInformation() {
 
       let productCard = 
       `<div class="card-panel hoverable col s3 product">
-      <img id="responsive-img class="pimg" src="${getIMG}">
+      <img id="responsive-img" class="pimg" src="${getIMG}">
       <ul>
       <li><h6 id="productT">${productTitle}</h6></li>
       </ul>
