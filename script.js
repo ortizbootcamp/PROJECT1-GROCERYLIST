@@ -249,6 +249,13 @@ function getSearchInformation() {
       let div = $("<div>")
       div.append(productCard)
       $("#productimg").append(div)
+     
+     $(document).on("click", ".product", function(event) {
+        productText = $(this).text()
+        putOnList(event);
+      
+        event.preventDefault();
+      })
     })
   }
 })
