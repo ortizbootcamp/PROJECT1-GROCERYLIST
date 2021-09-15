@@ -13,8 +13,23 @@
 </head>
 
 <body>
-<!--NAV/HEADER-->
-<!--SIDENAV-->
+<!--SIDENAV-->    
+
+<nav>
+    <ul id="slide-out" class="sidenav right">
+        <li><div class="user-view"></li>
+        <li><a href="#"><i class="material-icons">local_grocery_store</i>Shopping List</a></li>
+      </ul>
+      <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
+    <div class="nav-wrapper">
+    <a href="index.html" class="brand-logo center">Grocer-E</a>
+            <a class="dropdown-button" id="recipe-button" data-activates="dropdown1">Recipes</a>
+            <ul id="dropdown1" class="dropdown-content">
+              <div class="container-fluid">
+              </ul>
+              </div>
+</nav>
+<!--DASHBOARD-->       
     <ul id="slide-out" class="sidenav">
         <li><div class="user-view"></li>
         <li><a href="#"><i class="material-icons">local_grocery_store</i>Current Shopping List</a></li>
@@ -37,12 +52,12 @@
 <!--search-->
 <div class="container">
   <div class="row">
-    
     <div class="row">
       <div class="col s12">
         <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix searchbtn">search</i>
+
+          <div class="input-field col s5 ">
+            <i class="material-icons prefix searchbtn"id="searchbtn">search</i>
             <input type="text" id="autocomplete-input" class="autocomplete search-input">
             <label for="autocomplete-input">Search</label>
           </div>

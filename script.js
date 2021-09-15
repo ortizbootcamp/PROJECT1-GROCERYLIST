@@ -13,6 +13,56 @@ const settings = {
 };
 
 //button click to go to recipe puppy
+$(document).ready(function(){
+    $('.sidenav').sidenav()
+});
+$(document).ready(function(){
+  $(".dropdown-button").dropdown();
+})
+  var acInput = $(".autocomplete-input").text();
+  $(document).ready(function(){
+    $('input.autocomplete').autocomplete({
+      data: {
+        "Apples": null,
+        "Bananas": null,
+        "Pasta": null,
+        "Pizza": null,
+        "Oranges": null,
+        "Grapes": null,
+        "Tacos": null,
+        "Mac N Cheese": null,
+        "Burrito": null,
+        "Milk": null,
+        "Bread": null,
+        "Cookies": null,
+        "Broccoli": null,
+        "Carrots": null,
+        "Peas": null,
+        "Spinach": null,
+        "Beef": null,
+        "Chicken": null,
+        "Pork": null,
+        "Fish": null,
+        "Potatoes": null,
+        "Pineapple": null,
+        "Pie": null,
+        "Cake": null,
+        "Peanut Butter": null,
+        "Cheese": null,
+        "Tomatoes": null,
+        "Beans": null,
+        "Raspberries": null,
+        "Blackberries": null,
+        "Kiwi": null,
+        "Yogurt": null,
+        "Candy": null,
+        "Cereal": null,
+        "Eggs": null,
+        "Cashews": null,
+      },
+      limit: 3,
+    });
+  });
 
 $(document).ready(function () {
   $(".sidenav").sidenav();
@@ -57,6 +107,7 @@ button.addEventListener("click", function () {
     })
     .then(function (result) {
       console.log(result);
+
       var randomPicture = [];
       for (let i = 0; i < 10; i++) {
         randomPicture.push(result.results[i]);
@@ -66,6 +117,7 @@ button.addEventListener("click", function () {
       //all logic for adding recipes to screen
       var container = document.createElement("div");
       container.id = "recipe";
+
       for (let i = 0; i < 10; i++) {
         var recipe = result.results[i];
         var recipeLink = document.createElement("a");
@@ -76,6 +128,7 @@ button.addEventListener("click", function () {
         // var recipeInfo = document.getElementById("recipe-info");
         var recipeImage = document.createElement("img");
         recipeImage.setAttribute("src", recipe.thumbnail_url);
+
         //  recipeInfo.appendChild(recipeImage);
         recipeLink.appendChild(recipeImage);
         container.appendChild(recipeLink);
@@ -84,6 +137,7 @@ button.addEventListener("click", function () {
         recipeImage.style.display = "flex";
       }
       document.body.appendChild(container);
+
     })
     .catch(function (err) {
       console.error(err);
@@ -105,6 +159,9 @@ $(".searchbtn").on("click", function (event) {
   getSearchInformation(event);
   event.preventDefault();
 })
+
+
+/* API CALL */
 
 
 /*clear search results when another search is done*/
@@ -156,7 +213,6 @@ $("#productlist").append(listAddition);
 
 
 /* API CALL */
-
 function getSearchInformation() {
   /* Takes searched item and inputs into API, gets first 21 products */
   let groceryRequest = "https://api.spoonacular.com/food/products/search" + spoonRequest + "&query=" + searchQuery + "&number=3";
@@ -196,6 +252,42 @@ function getSearchInformation() {
       let div = $("<div>")
       div.append(productCard)
       $("#productimg").append(div)
+  })
+
+  }
+  
+})
+}
+
+
+//local storage for current grocery list
+/*grocery items*/
+var item = ""
+
+var groceryList = (function(){
+  var groceryList = []
+
+  function item(name,quantity) {
+    this.name = name
+    this.quantity = quantity
+  }
+  function save () {
+    localStorage.setItem('groceryList', JSON.stringify(groceryList))
+  }
+
+  function load() {
+    groceryList =   JSON.parse(localStorage.getItem(groceryList)) || []
+  }
+load 
+
+})
+var input = document.getElementById("autocomplete-input");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("searchbtn").click();
+  }
+});
     })
   }
 })
