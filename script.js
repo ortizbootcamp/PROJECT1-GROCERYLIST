@@ -1,25 +1,6 @@
-/*
- 1) Dashboard & Login Page
-    -Username
-    -Password
 
-
-2) Navbar, Sidenav & Search
-    -List of current groceries (sidenav)
-    -Categories of groceries (Sidenav)
-    -Search (Navbar)
-     >Autocomplete
-     >User Input
-     >If user types in item we do not have, 'item not available' appears
-3) Recipe suggestion in Navbar
-    -based on what items you have in your list
-
-    section id- favrecipes 
-    
-4)Email/Phone Number to add family member onto list
-
-    section id- favrecipes */
 //recipe API code
+
 const settings = {
   async: true,
   crossDomain: true,
@@ -30,10 +11,6 @@ const settings = {
     "x-rapidapi-key": "38dcaf69bamsh29728cd49878c87p1d3766jsn1c94143a9ed8",
   },
 };
-
-// $.ajax(settings).done(function (response) {
-//   console.log(response);
-// });
 
 //button click to go to recipe puppy
 $(document).ready(function(){
@@ -87,11 +64,42 @@ $(document).ready(function(){
     });
   });
 
+$(document).ready(function () {
+  $(".sidenav").sidenav();
+});
+function myFunction() {
+  document.getElementById("recipe-button").classList.toggle("show");
+}
+
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function (e) {
+  if (!e.target.matches("dropdown-button")) {
+    var myDropdown = document.getElementById("recipe-button");
+    if (myDropdown.classList.contains("show")) {
+      myDropdown.classList.remove("hide");
+    }
+  }
+};
+
+$(document).ready(function () {
+  $("input.autocomplete").autocomplete({
+    data: {
+      Apples: null,
+      Bananas: null,
+      Oranges: null,
+    },
+  });
+});
+
 var button = document.getElementById("recipe-button");
 button.addEventListener("click", function () {
   //add funtion to grab users choices//
+  var randomNum = Math.floor(Math.random() * 1483) + 1;
   fetch(
-    "https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&tags=under_30_minutes",
+    "https://tasty.p.rapidapi.com/recipes/list?from=" +
+      randomNum +
+      "&size=10&tags=under_30_minutes", // from = what index to start at | size = recipes returned max: 40 |
     settings
   )
     .then(function (result) {
@@ -99,80 +107,110 @@ button.addEventListener("click", function () {
     })
     .then(function (result) {
       console.log(result);
-      var randomPicture = []
-      for (let i = 0; i < Math.floor(Math.random() * 11); i++) {
-      randomPicture.push(result.results[i])
-      
+
+      var randomPicture = [];
+      for (let i = 0; i < 10; i++) {
+        randomPicture.push(result.results[i]);
+        console.log(result.results[i].slug); // "tasty.co/recipes/" + slug <= needs to go in your anchor tag
       }
-       console.log(randomPicture)
+      console.log(randomPicture);
       //all logic for adding recipes to screen
-      var container = document.createElement("div")
-      container.id = "recipe"
+      var container = document.createElement("div");
+      container.id = "recipe";
+
       for (let i = 0; i < 10; i++) {
         var recipe = result.results[i];
-        var recipeInfo = document.getElementById("recipe-info");
+        var recipeLink = document.createElement("a");
+        recipeLink.setAttribute(
+          "href",
+          "https://tasty.co/recipe/" + result.results[i].slug
+        );
+        // var recipeInfo = document.getElementById("recipe-info");
         var recipeImage = document.createElement("img");
         recipeImage.setAttribute("src", recipe.thumbnail_url);
-        // recipeInfo.appendChild(recipeImage); 
-        container.appendChild(recipeImage)
-        recipeImage.style.width = "250px"
-        recipeImage.style.height = 'auto'
-        recipeImage.style.display = "flex"
+
+        //  recipeInfo.appendChild(recipeImage);
+        recipeLink.appendChild(recipeImage);
+        container.appendChild(recipeLink);
+        recipeImage.style.width = "250px";
+        recipeImage.style.height = "auto";
+        recipeImage.style.display = "flex";
       }
-      document.body.appendChild(container)
+      document.body.appendChild(container);
+
     })
     .catch(function (err) {
       console.error(err);
     });
 });
 
-//DOM
 
-/*4)Email/Phone Number to add family member onto list
+/* Product API Reference Stuff */
 
-    -When they add an item, their name/image is attached to their items
-
-    -Main user will be able to delete/edit their items */
-
-/*    API DOC LINK: https://spoonacular.com/food-api/docs#Authentication */
-
-/* small site functionality */
-
-/*API*/
-
-var searchTerm = $("#search-input").val();
-var spoonRequest = "?apiKey=e1db73aa4c2649c49d537bb9ba5edfc6"
+var searchTerm = $(".search-input").val();
+var spoonRequest = "?apiKey=f2cc363c131d41018e9a7a7783419309";
 var genSearch = "https://api.spoonacular.com/food/products/search?" + spoonRequest + "&query=" + searchTerm + "&number=21";
 var foodID = "";
 var foodImageRequest = "https://spoonacular.com/productImages/" + foodID + "-90x90.png";
 
-
 /* search button connect*/
 $(".searchbtn").on("click", function (event) {
-
   searchQuery = $(".search-input").val();
-
   getSearchInformation(event);
   event.preventDefault();
+})
+
+
+/* API CALL */
+
+
+/*clear search results when another search is done*/
+
+$(".searchbtn").click(function() {
+  $(".product").remove();
+})
+
+
+
+//local storage for current grocery list
+/*grocery items*/
+var groceryItem = ""
+
+var groceryList = (function() {
+var groceryList = [];
+
+  function getItem(name) {
+    this.name = name
+  }
+  function save () {
+    localStorage.setItem('groceryList', JSON.stringify(groceryList))
+  }
+
+  function load() {
+    groceryList =   JSON.parse(localStorage.getItem(groceryList)) || []
+  }
+load()
 
 })
 
 
-/* click product -> add to list & local storage? */
-$("#product").on("click", function (event) {
-
-  putOnList(event);
-  event.preventDefault();
-
-})
 
 /* function that takes product name and puts it on list in the sidenav, also stores info */
-function putOnList() {
-  $(document).click(function(event){
-    var text = $(event.target).text();
-  })
+$(document).on("click", ".product", function(event) {
+  productText = $(this).text()
+  putOnList(event);
 
+  event.preventDefault();
+})
+  
+function putOnList() {
+  let listAddition = 
+  `
+  <li class="collection-item"><h6>${productText}</h6></li>
+  `
+$("#productlist").append(listAddition);
 }
+
 
 /* API CALL */
 function getSearchInformation() {
@@ -204,17 +242,16 @@ function getSearchInformation() {
     /* puts information together to form card */
 
       let productCard = 
-      `<div id="product" class="card-panel hoverable col s3">
-      <img id="responsive-img" src="${getIMG}">
+      `<div class="card-panel hoverable col s3 product">
+      <img id="responsive-img class="pimg" src="${getIMG}">
       <ul>
-      <li><h6>${productTitle}</h6></li>
+      <li><h6 id="productT">${productTitle}</h6></li>
       </ul>
       </div>
       `;
       let div = $("<div>")
       div.append(productCard)
       $("#productimg").append(div)
-    
   })
 
   }
@@ -251,3 +288,7 @@ input.addEventListener("keyup", function(event) {
    document.getElementById("searchbtn").click();
   }
 });
+    })
+  }
+})
+}
