@@ -4,131 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css"
-    <title></title>
+    <link rel="stylesheet" href="./style.css">
 
     <title>Grocer-E</title>
-
-<!--
-    1) Dashboard & Login Page
-    -Username
-    -Password
-
-    2) Navbar, Sidenav & Search
-    -List of current groceries (sidenav)
-    -Categories of groceries (Sidenav)
-    -Search (Navbar)
-     >Autocomplete
-     >User Input
-     >If user types in item we do not have, 'item not available' appear
-     
-    3) Recipe suggestion in Navbar
-    -based on what items you have in your list
-
-    4)Email/Phone Number to add family member onto list
-    -When they add an item, their name/image is attached to their items
-    -Main user will be able to delete/edit their items 
--->
 </head>
 
 <body>
-    <header></header>
+<!--SIDENAV-->    
 
-    <nav>
-      <div class="nav-wrapper">
-        <a href="#!" class="brand-logo center">Grocer-E</a>
-        <ul class="left hide-on-med-and-down">
-          <li><a href="#">List</a></li>
-
-          <button id="recipe-button">Recipes</button>
-          
-    </div>
-  </div>  
-</div>
-
-      
-    </nav>
-    <ul id="slide-out" class="sidenav">
-        <li><div class="user-view">
-        </li>
-        <li><a href="currentlist.html"><i class="material-icons">local_grocery_store</i>Current Shopping List</a></li>
-        <li><a href="#!"><i class="material-icons">person</i>Family</a></li>
-        <li><a href="#!"><i class="material-icons">person_add</i>Add Family Member</a></li>
+<nav>
+    <ul id="slide-out" class="sidenav right">
+        <li><div class="user-view"></li>
+        <li><a href="#"><i class="material-icons">local_grocery_store</i>Shopping List</a></li>
       </ul>
-      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="small material-icons">menu</i></a>
-      <div class="container center">
-        <a href="#login" class="btn btn-large teal modal-trigger">Login</a>
+      <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
+    <div class="nav-wrapper">
+    <a href="index.html" class="brand-logo center">Grocer-E</a>
+            <a class="dropdown-button" id="recipe-button" data-activates="dropdown1">Recipes</a>
+            <ul id="dropdown1" class="dropdown-content">
+              <div class="container-fluid">
+              </ul>
+              </div>
+</nav>
+<!--DASHBOARD-->        
+<div class="container">
+  <div class="row">
+
+    <!--Shopping Page-->
+    
+    <div class="row">
+      <div class="col s12">
+        <div class="row">
+          <div class="input-field col s5 ">
+            <i class="material-icons prefix">search</i>
+            <input type="text" id="autocomplete-input" class="autocomplete">
+            <label for="autocomplete-input">Search</label>
+          </div>
+        </div>
       </div>
-      
-      <div id="login" class="modal">
-        <h5 class="modal-close">&#10005;</h5>
-        <div class="modal-content center">
-          <h4>Login Form</h4>
-          z<br>
-
-      
-          <form action="#">
-      
-            <div class="input-field">
-              <i class="material-icons prefix">person</i>
-              <input type="text" id="name">
-              <label for="name">Username</label>
-            </div>
-            <br>
-      
-            <div class="input-field">
-              <i class="material-icons prefix">lock</i>
-              <input type="password" id="pass">
-              <label for="pass">Password</label>
-            </div>
-            <br>
-      
-            <div class="left" style="margin-left:20px;">
-              <input type="checkbox" id="check">
-              <label for="check">Remember Me</label>
-            </div>
-            <br>
-            
-            <input type="submit" value="Login" class="btn btn-large">
-            
-          </form>
-        </div>
-        </div>
- 
-
-    <!--DASHBOARD-->
-                <!--USERNAME SECTION-->
-                <section id="username"></section>
-                    <!--CONNECTED USERS-->
-                    <section id="otherusers"></section>
-                        <!--BASIC/FAVORITED ITEMS(eggs, milk, etc.)-->
-                        <section id="favitems"></section>
-                            <!--FAVORITED RECIPES-->
-
-                                <!--CREATE NEW LIST BUTTON-->
-                                <button id="newlibtn" class="btn"></button>
-                                    <!--PAST LISTS-->
-                                    <section id="pastli"></section>
-    <!--DASHBOARD-->
-
-<!--Shopping Page-->
-<section id="groceries">
-    <img id="productimg">
-    <content>
-        <li id="price"></li>
-        <li id=""></li>
-    </content>
-</section>
-
-<div id= "recipe-info">
-  
+    </div>
+</div>
 </div>
 
-<script src="script.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="./script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 
