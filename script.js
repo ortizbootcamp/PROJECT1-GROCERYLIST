@@ -59,6 +59,7 @@ $(".searchbtn").on("click", function (event) {
 })
 
 
+/*clear search results when another search is done*/
 
 $(".searchbtn").click(function() {
   $(".product").remove();
@@ -87,7 +88,7 @@ load()
 
 })
 
-/*clear search results when another search is done
+
 
 /* function that takes product name and puts it on list in the sidenav, also stores info */
 $(document).on("click", ".product", function(event) {
