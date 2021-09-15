@@ -83,16 +83,6 @@ window.onclick = function (e) {
   }
 };
 
-$(document).ready(function () {
-  $("input.autocomplete").autocomplete({
-    data: {
-      Apples: null,
-      Bananas: null,
-      Oranges: null,
-    },
-  });
-});
-
 var button = document.getElementById("recipe-button");
 button.addEventListener("click", function () {
   //add funtion to grab users choices//
@@ -144,7 +134,6 @@ button.addEventListener("click", function () {
       console.error(err);
     });
 });
-
 /* Product API Reference Stuff */
 
 var searchTerm = $(".search-input").val();
@@ -159,6 +148,7 @@ $(".searchbtn").on("click", function (event) {
   getSearchInformation(event);
   event.preventDefault();
 })
+
 
 /*clear search results when another search is done*/
 
@@ -249,13 +239,6 @@ function getSearchInformation() {
       let div = $("<div>")
       div.append(productCard)
       $("#productimg").append(div)
-     
-     $(document).on("click", ".product", function(event) {
-        productText = $(this).text()
-        putOnList(event);
-      
-        event.preventDefault();
-      })
     })
   }
 })
