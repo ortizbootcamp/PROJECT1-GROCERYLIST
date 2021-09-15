@@ -145,7 +145,6 @@ button.addEventListener("click", function () {
     });
 });
 
-
 /* Product API Reference Stuff */
 
 var searchTerm = $(".search-input").val();
@@ -160,10 +159,6 @@ $(".searchbtn").on("click", function (event) {
   getSearchInformation(event);
   event.preventDefault();
 })
-
-
-/* API CALL */
-
 
 /*clear search results when another search is done*/
 
@@ -214,6 +209,7 @@ $("#productlist").append(listAddition);
 
 
 /* API CALL */
+
 function getSearchInformation() {
   /* Takes searched item and inputs into API, gets first 21 products */
   let groceryRequest = "https://api.spoonacular.com/food/products/search" + spoonRequest + "&query=" + searchQuery + "&number=3";
@@ -253,35 +249,10 @@ function getSearchInformation() {
       let div = $("<div>")
       div.append(productCard)
       $("#productimg").append(div)
-  })
-
+    })
   }
-  
 })
 }
-
-
-//local storage for current grocery list
-/*grocery items*/
-var item = ""
-
-var groceryList = (function(){
-  var groceryList = []
-
-  function item(name,quantity) {
-    this.name = name
-    this.quantity = quantity
-  }
-  function save () {
-    localStorage.setItem('groceryList', JSON.stringify(groceryList))
-  }
-
-  function load() {
-    groceryList =   JSON.parse(localStorage.getItem(groceryList)) || []
-  }
-load 
-
-})
 
 var input = document.getElementById("autocomplete-input");
 input.addEventListener("keyup", function(event) {
