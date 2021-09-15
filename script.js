@@ -59,14 +59,11 @@ $(".searchbtn").on("click", function (event) {
 })
 
 
-<<<<<<< HEAD
 /*clear search results when another search is done*/
 
 $(".searchbtn").click(function() {
   $(".product").remove();
 })
-=======
->>>>>>> 5b3d176cb82df7ef28a13b69757a0824777e30e1
 
 
 
@@ -154,53 +151,4 @@ function getSearchInformation() {
     })
   }
 })
-<<<<<<< HEAD
 }
-=======
-}
-/* API CALL */
-
-
-/*
-PSEUDO CODE
->user searches
-
->get information from api
--information needed:
-image
-name
-price
-
-to get my image i need the product id
-to get the name, i can just search
-to get price i need product id
-
-first, search name
-
-get title & id of 21 products
-
-save those titles to storage separately
-
-take product ids
-request price
-
-input product id to 
-request img
-
-take image, name, price information
-
-put into card format for 21 products
-
-display on site
-
- getProductImg();
-
-    let productCard =
-    `
-    <img id="productimg responsive-img" src="{}">
-    <h6>${response.title};</h6>
-    `;
-
-    $("#name").html(productCard);
-
->>>>>>> 5b3d176cb82df7ef28a13b69757a0824777e30e1
