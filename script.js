@@ -137,7 +137,7 @@ button.addEventListener("click", function () {
 /* Product API Reference Stuff */
 
 var searchTerm = $(".search-input").val();
-var spoonRequest = "?apiKey=f2cc363c131d41018e9a7a7783419309";
+var spoonRequest = "?apiKey=21f5dc0d9fd041aca40b7098e690844d";
 var genSearch = "https://api.spoonacular.com/food/products/search?" + spoonRequest + "&query=" + searchTerm + "&number=21";
 var foodID = "";
 var foodImageRequest = "https://spoonacular.com/productImages/" + foodID + "-90x90.png";
