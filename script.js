@@ -275,7 +275,7 @@ function getSearchInformation() {
 
       let productCard = 
       `<div class="card-panel hoverable col s3 product">
-      <img id="responsive-img class="pimg" src="${getIMG}">
+      <img id="responsive-img" class="pimg product" src="${getIMG}">
       <ul>
       <li><h6 id="productT">${productTitle}</h6></li>
       </ul>
