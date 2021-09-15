@@ -19,7 +19,6 @@ $(document).ready(function(){
 $(document).ready(function(){
   $(".dropdown-button").dropdown();
 })
-  var acInput = $(".autocomplete-input").text();
   $(document).ready(function(){
     $('input.autocomplete').autocomplete({
       data: {
@@ -288,7 +287,3 @@ input.addEventListener("keyup", function(event) {
    document.getElementById("searchbtn").click();
   }
 });
-    })
-  }
-})
-}
