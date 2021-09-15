@@ -1,6 +1,4 @@
-
-
-  var acInput = $(".autocomplete-input").text();
+var acInput = $(".autocomplete-input").text();
   $(document).ready(function(){
     $('input.autocomplete').autocomplete({
       data: {
@@ -51,7 +49,6 @@ $(document).ready(function () {
 function myFunction() {
   document.getElementById("recipe-button").classList.toggle("show");
 }
-
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function (e) {
@@ -119,13 +116,11 @@ $(".searchbtn").on("click", function (event) {
   event.preventDefault();
 })
 
-
 /*clear search results when another search is done*/
 
 $(".searchbtn").click(function() {
   $(".product").remove();
 })
-
 
 
 //local storage for current grocery list
