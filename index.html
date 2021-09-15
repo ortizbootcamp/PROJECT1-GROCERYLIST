@@ -10,25 +10,7 @@
     <link rel="stylesheet" href="./style.css">
 
     <title>Grocer-E</title>
-</head>
 
-<body>
-<!--SIDENAV-->    
-
-<nav>
-    <ul id="slide-out" class="sidenav right">
-        <li><div class="user-view"></li>
-        <li><a href="#"><i class="material-icons">local_grocery_store</i>Shopping List</a></li>
-      </ul>
-      <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
-    <div class="nav-wrapper">
-    <a href="index.html" class="brand-logo center">Grocer-E</a>
-            <a class="dropdown-button" id="recipe-button" data-activates="dropdown1">Recipes</a>
-            <ul id="dropdown1" class="dropdown-content">
-              <div class="container-fluid">
-              </ul>
-              </div>
-</nav>
 <!--DASHBOARD-->        
 <div class="container">
   <div class="row">
@@ -49,6 +31,17 @@
 </div>
 </div>
 
+<section id="groceries" class="col s12 center-align">
+
+<div class="card-panel hoverable col s3">
+    <content id="productimg"></content>
+</div>
+
+</div>
+</div>
+<!--DASHBOARD-->
+<div id= "recipe-info"></div>
+  
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="./script.js"></script>
