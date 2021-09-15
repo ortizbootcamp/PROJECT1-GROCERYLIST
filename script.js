@@ -134,10 +134,55 @@ button.addEventListener("click", function () {
       console.error(err);
     });
 });
+//recipe API code
+
+const settings = {
+  async: true,
+  crossDomain: true,
+  url: "https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&tags=under_30_minutes",
+  method: "GET",
+  headers: {
+    "x-rapidapi-host": "tasty.p.rapidapi.com",
+    "x-rapidapi-key": "38dcaf69bamsh29728cd49878c87p1d3766jsn1c94143a9ed8",
+  },
+};
+
+//button click to go to recipe puppy
+$(document).ready(function(){
+    $('.sidenav').sidenav()
+});
+
+var button = document.getElementById("recipe-button");
+button.addEventListener("click", function () {
+  //add funtion to grab users choices//
+  fetch(
+    "https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&tags=under_30_minutes",
+    settings
+  )
+    .then(function (result) {
+      return result.json();
+    })
+    .then(function (result) {
+      console.log(result);
+      //all logic for adding recipes to screen
+      for (let i = 0; i < result.results.length; i++) {
+        var recipe = result.results[i];
+        var recipeInfo = document.getElementById("recipe-info");
+        var recipeImage = document.createElement("img");
+        recipeImage.setAttribute("src", recipe.thumbnail_url);
+        recipeInfo.appendChild(recipeImage);
+      }
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
+});
+
+
 /* Product API Reference Stuff */
 
 var searchTerm = $(".search-input").val();
-var spoonRequest = "?apiKey=21f5dc0d9fd041aca40b7098e690844d";
+var spoonRequest = "?apiKey=f2cc363c131d41018e9a7a7783419309";
 var genSearch = "https://api.spoonacular.com/food/products/search?" + spoonRequest + "&query=" + searchTerm + "&number=21";
 var foodID = "";
 var foodImageRequest = "https://spoonacular.com/productImages/" + foodID + "-90x90.png";
@@ -230,7 +275,7 @@ function getSearchInformation() {
 
       let productCard = 
       `<div class="card-panel hoverable col s3 product">
-      <img id="responsive-img" class="pimg" src="${getIMG}">
+      <img id="responsive-img class="pimg" src="${getIMG}">
       <ul>
       <li><h6 id="productT">${productTitle}</h6></li>
       </ul>
@@ -243,11 +288,3 @@ function getSearchInformation() {
   }
 })
 }
-
-var input = document.getElementById("autocomplete-input");
-input.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-   event.preventDefault();
-   document.getElementById("searchbtn").click();
-  }
-})
