@@ -62,3 +62,13 @@ input[type="password"] {
 #responsive-img {
   padding:5px;
 }
+  #recipe-button {
+  position: relative;
+}
+#recipe {
+  position: absolute;
+  top: 64px;
+  left: 5px;
+  height: 500px;
+  overflow-y: scroll;
+}
