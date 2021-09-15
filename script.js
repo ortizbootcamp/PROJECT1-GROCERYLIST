@@ -81,7 +81,7 @@ $(document).ready(function(){
         "Candy": null,
         "Cereal": null,
         "Eggs": null,
-        "Cashews": null,
+        "Nuts": null,
       },
       limit: 3,
     });
