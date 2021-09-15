@@ -1,25 +1,5 @@
 
 
-//recipe API code
-
-const settings = {
-  async: true,
-  crossDomain: true,
-  url: "https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&tags=under_30_minutes",
-  method: "GET",
-  headers: {
-    "x-rapidapi-host": "tasty.p.rapidapi.com",
-    "x-rapidapi-key": "38dcaf69bamsh29728cd49878c87p1d3766jsn1c94143a9ed8",
-  },
-};
-
-//button click to go to recipe puppy
-$(document).ready(function(){
-    $('.sidenav').sidenav()
-});
-$(document).ready(function(){
-  $(".dropdown-button").dropdown();
-})
   var acInput = $(".autocomplete-input").text();
   $(document).ready(function(){
     $('input.autocomplete').autocomplete({
@@ -83,57 +63,6 @@ window.onclick = function (e) {
   }
 };
 
-var button = document.getElementById("recipe-button");
-button.addEventListener("click", function () {
-  //add funtion to grab users choices//
-  var randomNum = Math.floor(Math.random() * 1483) + 1;
-  fetch(
-    "https://tasty.p.rapidapi.com/recipes/list?from=" +
-      randomNum +
-      "&size=10&tags=under_30_minutes", // from = what index to start at | size = recipes returned max: 40 |
-    settings
-  )
-    .then(function (result) {
-      return result.json();
-    })
-    .then(function (result) {
-      console.log(result);
-
-      var randomPicture = [];
-      for (let i = 0; i < 10; i++) {
-        randomPicture.push(result.results[i]);
-        console.log(result.results[i].slug); // "tasty.co/recipes/" + slug <= needs to go in your anchor tag
-      }
-      console.log(randomPicture);
-      //all logic for adding recipes to screen
-      var container = document.createElement("div");
-      container.id = "recipe";
-
-      for (let i = 0; i < 10; i++) {
-        var recipe = result.results[i];
-        var recipeLink = document.createElement("a");
-        recipeLink.setAttribute(
-          "href",
-          "https://tasty.co/recipe/" + result.results[i].slug
-        );
-        // var recipeInfo = document.getElementById("recipe-info");
-        var recipeImage = document.createElement("img");
-        recipeImage.setAttribute("src", recipe.thumbnail_url);
-
-        //  recipeInfo.appendChild(recipeImage);
-        recipeLink.appendChild(recipeImage);
-        container.appendChild(recipeLink);
-        recipeImage.style.width = "250px";
-        recipeImage.style.height = "auto";
-        recipeImage.style.display = "flex";
-      }
-      document.body.appendChild(container);
-
-    })
-    .catch(function (err) {
-      console.error(err);
-    });
-});
 //recipe API code
 
 const settings = {
@@ -147,10 +76,6 @@ const settings = {
   },
 };
 
-//button click to go to recipe puppy
-$(document).ready(function(){
-    $('.sidenav').sidenav()
-});
 
 var button = document.getElementById("recipe-button");
 button.addEventListener("click", function () {
