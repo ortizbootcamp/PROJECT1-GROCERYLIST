@@ -96,8 +96,6 @@ $(".searchbtn").on("click", function (event) {
   getSearchInformation(event);
   event.preventDefault();
 
-})
-/* search button connect*/
 
 /* API CALL - test for 1 */
 
@@ -186,4 +184,3 @@ display on site
 
     $("#name").html(productCard);
 
-*/
