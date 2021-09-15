@@ -1,4 +1,5 @@
 
+
 //recipe API code
 
 const settings = {
@@ -288,5 +289,4 @@ input.addEventListener("keyup", function(event) {
    event.preventDefault();
    document.getElementById("searchbtn").click();
   }
-});
-
+})
