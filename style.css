@@ -23,10 +23,15 @@ input[type="password"] {
     -based on what items you have in your list*/
 
 
-#groceries > .card-panel {
+.card-panel {
   margin: 10px;
+  height: 200px;
+  width: fit-content;
 }
 
+#responsive-img {
+  padding:5px;
+}
 
 
     .dropdown .dropbtn {

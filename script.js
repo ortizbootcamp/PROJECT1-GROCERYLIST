@@ -1,5 +1,6 @@
 
 //recipe API code
+
 const settings = {
   async: true,
   crossDomain: true,
@@ -19,6 +20,7 @@ $(document).ready(function () {
 function myFunction() {
   document.getElementById("recipe-button").classList.toggle("show");
 }
+
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function (e) {
@@ -88,51 +90,77 @@ button.addEventListener("click", function () {
     });
 });
 
-//grocery items
-var item = "";
 
-var groceryList = function () {
-  var groceryList = [];
-
-  function item(name, quantity) {
-    this.name = name;
-    this.quantity = quantity;
-  }
-  function save() {
-    localStorage.setItem("groceryList", JSON.stringify(groceryList));
-  }
-
-  function load() {
-    groceryList = JSON.parse(localStorage.getItem(groceryList)) || [];
-  }
-  load;
-};
-
-/*    API DOC LINK: https://spoonacular.com/food-api/docs#Authentication */
-
-
-/*API*/
+/* Product API Reference Stuff */
 
 var searchTerm = $(".search-input").val();
-var spoonRequest = "?apiKey=21f5dc0d9fd041aca40b7098e690844d";
+var spoonRequest = "?apiKey=f2cc363c131d41018e9a7a7783419309";
 var genSearch = "https://api.spoonacular.com/food/products/search?" + spoonRequest + "&query=" + searchTerm + "&number=21";
 var foodID = "";
 var foodImageRequest = "https://spoonacular.com/productImages/" + foodID + "-90x90.png";
 
 /* search button connect*/
 $(".searchbtn").on("click", function (event) {
-
   searchQuery = $(".search-input").val();
-
   getSearchInformation(event);
   event.preventDefault();
+})
 
 
-/* API CALL - test for 1 */
+/*clear search results when another search is done*/
+
+$(".searchbtn").click(function() {
+  $(".product").remove();
+})
+
+
+
+//local storage for current grocery list
+/*grocery items*/
+var groceryItem = ""
+
+var groceryList = (function() {
+var groceryList = [];
+
+  function getItem(name) {
+    this.name = name
+  }
+  function save () {
+    localStorage.setItem('groceryList', JSON.stringify(groceryList))
+  }
+
+  function load() {
+    groceryList =   JSON.parse(localStorage.getItem(groceryList)) || []
+  }
+load()
+
+})
+
+
+
+/* function that takes product name and puts it on list in the sidenav, also stores info */
+$(document).on("click", ".product", function(event) {
+  productText = $(this).text()
+  putOnList(event);
+
+  event.preventDefault();
+})
+  
+function putOnList() {
+  let listAddition = 
+  `
+  <li class="collection-item"><h6>${productText}</h6></li>
+  `
+$("#productlist").append(listAddition);
+}
+
+
+/* API CALL */
 
 function getSearchInformation() {
   /* Takes searched item and inputs into API, gets first 21 products */
-  let groceryRequest = "https://api.spoonacular.com/food/products/search" + spoonRequest + "&query=" + searchQuery + "&number=21";
+  let groceryRequest = "https://api.spoonacular.com/food/products/search" + spoonRequest + "&query=" + searchQuery + "&number=3";
+
   fetch(groceryRequest)
   .then(function (response) {
     return response.json();
@@ -140,33 +168,35 @@ function getSearchInformation() {
 
   .then(function (response) {
    /* Takes responses and picks the IDs out of the response to get their information */
-  
-   let productID = response.products[0].id;
+  for (let i = 0; i < response.products.length; i++) {
+   let productID = response.products[i].id;
    let getInfo = "https://api.spoonacular.com/food/products/" + productID + spoonRequest;
+
    fetch(getInfo)
    .then(function(response) {
      return response.json();
    })
-    
+
    .then(function(response) {
     /* Takes product information image type and image */
     let productTitle = response.title;
     let imgType = response.imageType;
     let getIMG = "https://spoonacular.com/productImages/" + productID + "-90x90." + imgType;
-    fetch(getIMG)
-    .then(function() {
+
     /* puts information together to form card */
 
       let productCard = 
-      `<img id="responsive-img" src="${getIMG}">
+      `<div class="card-panel hoverable col s3 product">
+      <img id="responsive-img class="pimg" src="${getIMG}">
       <ul>
-      <li><h5>${productTitle}</h5></li>
+      <li><h6 id="productT">${productTitle}</h6></li>
       </ul>
+      </div>
       `;
-
-      $("#productimg").html(productCard);
-      
+      let div = $("<div>")
+      div.append(productCard)
+      $("#productimg").append(div)
     })
-  })
+  }
 })
 }

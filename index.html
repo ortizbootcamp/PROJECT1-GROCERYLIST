@@ -10,37 +10,55 @@
     <link rel="stylesheet" href="./style.css">
 
     <title>Grocer-E</title>
+</head>
 
-<!--DASHBOARD-->        
+<body>
+<!--NAV/HEADER-->
+<!--SIDENAV-->
+    <ul id="slide-out" class="sidenav">
+        <li><div class="user-view"></li>
+        <li><a href="#"><i class="material-icons">local_grocery_store</i>Current Shopping List</a></li>
+        <div id="productlist" class="collection">
+        </div>
+      </ul>
+      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+<!--NAV-->    
+<nav>
+  <div class="nav-wrapper">
+    <a href="#!" class="brand-logo center">Grocer-E</a>
+    <ul class="left">
+      <li><a href="#">List</a></li>
+      <li><button id="recipe-button">Recipes</button></li>
+      <form action="" class="browser-default right">
+        <form action="" class="browser-default right">
+</nav>
+
+<!--Shopping Page-->
+<!--search-->
 <div class="container">
   <div class="row">
-
-    <!--Shopping Page-->
     
     <div class="row">
       <div class="col s12">
         <div class="row">
-          <div class="input-field col s5 ">
-            <i class="material-icons prefix">search</i>
-            <input type="text" id="autocomplete-input" class="autocomplete">
+          <div class="input-field col s12">
+            <i class="material-icons prefix searchbtn">search</i>
+            <input type="text" id="autocomplete-input" class="autocomplete search-input">
             <label for="autocomplete-input">Search</label>
           </div>
         </div>
       </div>
     </div>
+
+<!--groceries-->
+<div id="groceries" class="col s12 center-align">
+  <div id="productimg"></div>
 </div>
 </div>
 
-<section id="groceries" class="col s12 center-align">
-
-<div class="card-panel hoverable col s3">
-    <content id="productimg"></content>
-</div>
-
-</div>
-</div>
-<!--DASHBOARD-->
+<!--recipeinfo div-->
 <div id= "recipe-info"></div>
+  
   
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
