@@ -281,6 +281,7 @@ var groceryList = (function(){
 load 
 
 })
+
 var input = document.getElementById("autocomplete-input");
 input.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
@@ -288,7 +289,4 @@ input.addEventListener("keyup", function(event) {
    document.getElementById("searchbtn").click();
   }
 });
-    })
-  }
-})
-}
+
