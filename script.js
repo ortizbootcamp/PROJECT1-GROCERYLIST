@@ -19,6 +19,7 @@ $(document).ready(function(){
 $(document).ready(function(){
   $(".dropdown-button").dropdown();
 })
+
   $(document).ready(function(){
     $('input.autocomplete').autocomplete({
       data: {
@@ -81,16 +82,6 @@ window.onclick = function (e) {
   }
 };
 
-$(document).ready(function () {
-  $("input.autocomplete").autocomplete({
-    data: {
-      Apples: null,
-      Bananas: null,
-      Oranges: null,
-    },
-  });
-});
-
 var button = document.getElementById("recipe-button");
 button.addEventListener("click", function () {
   //add funtion to grab users choices//
@@ -116,7 +107,6 @@ button.addEventListener("click", function () {
       //all logic for adding recipes to screen
       var container = document.createElement("div");
       container.id = "recipe";
-
       for (let i = 0; i < 10; i++) {
         var recipe = result.results[i];
         var recipeLink = document.createElement("a");
@@ -127,7 +117,6 @@ button.addEventListener("click", function () {
         // var recipeInfo = document.getElementById("recipe-info");
         var recipeImage = document.createElement("img");
         recipeImage.setAttribute("src", recipe.thumbnail_url);
-
         //  recipeInfo.appendChild(recipeImage);
         recipeLink.appendChild(recipeImage);
         container.appendChild(recipeLink);
@@ -136,7 +125,6 @@ button.addEventListener("click", function () {
         recipeImage.style.display = "flex";
       }
       document.body.appendChild(container);
-
     })
     .catch(function (err) {
       console.error(err);
@@ -257,7 +245,6 @@ function getSearchInformation() {
   
 })
 }
-
 
 //local storage for current grocery list
 /*grocery items*/
