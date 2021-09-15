@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
@@ -33,12 +33,19 @@
 
 <body>
 <!--NAV/HEADER-->
-    <nav>
+<!--SIDENAV-->
+    <ul id="slide-out" class="sidenav">
+        <li><div class="user-view"></li>
+        <li><a href="#"><i class="material-icons">local_grocery_store</i>Current Shopping List</a></li>
+      </ul>
+      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+<!--SIDENAV-->    
+<nav>
       <div class="nav-wrapper">
         <a href="#!" class="brand-logo center">Grocer-E</a>
         <ul class="left">
           <li><a href="#">List</a></li>
-          <li><a href="#">Recipes</a></li>
+          <li><button id="recipe-button">Recipes</button></li>
           <form action="" class="browser-default right">
        <form action="" class="browser-default right">
 
@@ -46,31 +53,17 @@
           <div class="col s12">
             <div class="row">
               <div class="input-field col s12">
-                <i class="material-icons prefix">search</i>
-                <input type="text" id="autocomplete-input" class="autocomplete">
+                <i class="material-icons prefix searchbtn">search</i>
+                <input type="text" id="autocomplete-input" class="autocomplete search-input">
                 <label for="autocomplete-input">Search</label>
               </div>
             </div>
           </div>
         </div>
-      
-    </nav>
-        <input id="search-input" placeholder="Search" type="text" class="browser-default search-field" name="q" value="" autocomplete="off" aria-label="Search box">
-        </ul>
-      </div>
-
     </nav>
 <!--NAV-->
 
-<!--SIDENAV-->
-    <ul id="slide-out" class="sidenav">
-        <li><div class="user-view"></li>
-        <li><a href="currentlist.html"><i class="material-icons">local_grocery_store</i>Current Shopping List</a></li>
-        <li><a href="#!"><i class="material-icons">person</i>Family</a></li>
-        <li><a href="#!"><i class="material-icons">person_add</i>Add Family Member</a></li>
-      </ul>
-      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-<!--SIDENAV-->
+
 
 <!--FAVORITED RECIPES(THIS WILL BE MOVED INTO NAVBAR)
   
@@ -100,40 +93,14 @@
 
 <section id="groceries" class="col s12 center-align">
 
-  <div class="card-panel hoverable col s3">
-    <content>
-    <img id="productimg responsive-img" src="">
-      <ul>
-        <li id="name"></li>
-        <li id="price"></li>
-      </ul>
-    </content>
-  </div>
-
-  <div class="card-panel hoverable col s3">
-    <img id="productimg responsive-img" src="">
-    <content>
-      <ul>
-        <li id="name"></li>
-        <li id="price"></li>
-      </ul>
-    </content>
-  </div>
-
 <div class="card-panel hoverable col s3">
-    <img id="productimg responsive-img" src="">
-    <content>
-      <ul>
-        <li id="name"></li>
-        <li id="price"></li>
-      </ul>
-    </content>
-  </div>
+    <content id="productimg"></content>
+</div>
 
 </div>
 </div>
 <!--DASHBOARD-->
-
+<div id= "recipe-info"></div>
   
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
