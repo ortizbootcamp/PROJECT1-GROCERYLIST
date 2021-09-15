@@ -10,25 +10,6 @@
     <link rel="stylesheet" href="./style.css">
 
     <title>Grocer-E</title>
-
-<!--
-    1) Dashboard & Login Page
-    -Username
-    -Password
-    2) Navbar, Sidenav & Search
-    -List of current groceries (sidenav)
-    -Categories of groceries (Sidenav)
-    -Search (Navbar)
-     >Autocomplete
-     >User Input
-     >If user types in item we do not have, 'item not available' appear
-     
-    3) Recipe suggestion in Navbar
-    -based on what items you have in your list
-    4)Email/Phone Number to add family member onto list
-    -When they add an item, their name/image is attached to their items
-    -Main user will be able to delete/edit their items 
--->
 </head>
 
 <body>
@@ -37,69 +18,45 @@
     <ul id="slide-out" class="sidenav">
         <li><div class="user-view"></li>
         <li><a href="#"><i class="material-icons">local_grocery_store</i>Current Shopping List</a></li>
+        <div id="productlist" class="collection">
+        </div>
       </ul>
       <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-<!--SIDENAV-->    
+<!--NAV-->    
 <nav>
-      <div class="nav-wrapper">
-        <a href="#!" class="brand-logo center">Grocer-E</a>
-        <ul class="left">
-          <li><a href="#">List</a></li>
-          <li><button id="recipe-button">Recipes</button></li>
-          <form action="" class="browser-default right">
-       <form action="" class="browser-default right">
+  <div class="nav-wrapper">
+    <a href="#!" class="brand-logo center">Grocer-E</a>
+    <ul class="left">
+      <li><a href="#">List</a></li>
+      <li><button id="recipe-button">Recipes</button></li>
+      <form action="" class="browser-default right">
+        <form action="" class="browser-default right">
+</nav>
 
-        <div class="row">
-          <div class="col s12">
-            <div class="row">
-              <div class="input-field col s12">
-                <i class="material-icons prefix searchbtn">search</i>
-                <input type="text" id="autocomplete-input" class="autocomplete search-input">
-                <label for="autocomplete-input">Search</label>
-              </div>
-            </div>
-          </div>
-        </div>
-    </nav>
-<!--NAV-->
-
-
-
-<!--FAVORITED RECIPES(THIS WILL BE MOVED INTO NAVBAR)
-  
-<div class="dropdown">
-                                <button class="dropbtn btn">RECIPES</button>
-                            <div class="dropdown-content">
-                                <a href="#">Link 1</a>
-                                <a href="#">Link 2</a>
-                                <a href="#">Link 3</a>
-                            </div>
-</div>
--->
-
-    <!--CREATE NEW LIST BUTTON(may move into nav or sidenav)
-    <button id="newlibtn" class="btn">CREATE NEW LIST</button> 
--->
-
-<!--DASHBOARD-->        
+<!--Shopping Page-->
+<!--search-->
 <div class="container">
   <div class="row">
-
-    <!--Shopping Page-->
     
-<section id="pcategory" class="left-align">
-  <h3>CATEGORY</h3>
-</section>
+    <div class="row">
+      <div class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix searchbtn">search</i>
+            <input type="text" id="autocomplete-input" class="autocomplete search-input">
+            <label for="autocomplete-input">Search</label>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<section id="groceries" class="col s12 center-align">
-
-<div class="card-panel hoverable col s3">
-    <content id="productimg"></content>
+<!--groceries-->
+<div id="groceries" class="col s12 center-align">
+  <div id="productimg"></div>
+</div>
 </div>
 
-</div>
-</div>
-<!--DASHBOARD-->
+<!--recipeinfo div-->
 <div id= "recipe-info"></div>
   
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

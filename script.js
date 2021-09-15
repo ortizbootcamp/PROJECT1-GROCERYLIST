@@ -1,25 +1,5 @@
-/*
- 1) Dashboard & Login Page
-    -Username
-    -Password
-
-
-2) Navbar, Sidenav & Search
-    -List of current groceries (sidenav)
-    -Categories of groceries (Sidenav)
-    -Search (Navbar)
-     >Autocomplete
-     >User Input
-     >If user types in item we do not have, 'item not available' appears
-3) Recipe suggestion in Navbar
-    -based on what items you have in your list
-
-    section id- favrecipes 
-    
-4)Email/Phone Number to add family member onto list
-
-    section id- favrecipes */
 //recipe API code
+
 const settings = {
   async: true,
   crossDomain: true,
@@ -31,24 +11,10 @@ const settings = {
   },
 };
 
-// $.ajax(settings).done(function (response) {
-//   console.log(response);
-// });
-
 //button click to go to recipe puppy
 $(document).ready(function(){
     $('.sidenav').sidenav()
 });
-
-$(document).ready(function(){
-    $('input.autocomplete').autocomplete({
-      data: {
-        "Apples": null,
-        "Bananas": null,
-        "Oranges": null,
-      },
-    });
-  });
 
 var button = document.getElementById("recipe-button");
 button.addEventListener("click", function () {
@@ -77,33 +43,75 @@ button.addEventListener("click", function () {
 });
 
 
-/*    API DOC LINK: https://spoonacular.com/food-api/docs#Authentication */
-
-
-/*API*/
+/* Product API Reference Stuff */
 
 var searchTerm = $(".search-input").val();
-var spoonRequest = "?apiKey=21f5dc0d9fd041aca40b7098e690844d";
+var spoonRequest = "?apiKey=f2cc363c131d41018e9a7a7783419309";
 var genSearch = "https://api.spoonacular.com/food/products/search?" + spoonRequest + "&query=" + searchTerm + "&number=21";
 var foodID = "";
 var foodImageRequest = "https://spoonacular.com/productImages/" + foodID + "-90x90.png";
 
 /* search button connect*/
 $(".searchbtn").on("click", function (event) {
-
   searchQuery = $(".search-input").val();
-
   getSearchInformation(event);
   event.preventDefault();
+})
+
+
+
+$(".searchbtn").click(function() {
+  $(".product").remove();
+})
+
+
+
+//local storage for current grocery list
+/*grocery items*/
+var groceryItem = ""
+
+var groceryList = (function() {
+var groceryList = [];
+
+  function getItem(name) {
+    this.name = name
+  }
+  function save () {
+    localStorage.setItem('groceryList', JSON.stringify(groceryList))
+  }
+
+  function load() {
+    groceryList =   JSON.parse(localStorage.getItem(groceryList)) || []
+  }
+load()
 
 })
-/* search button connect*/
 
-/* API CALL - test for 1 */
+/*clear search results when another search is done
+
+/* function that takes product name and puts it on list in the sidenav, also stores info */
+$(document).on("click", ".product", function(event) {
+  productText = $(this).text()
+  putOnList(event);
+
+  event.preventDefault();
+})
+  
+function putOnList() {
+  let listAddition = 
+  `
+  <li class="collection-item"><h6>${productText}</h6></li>
+  `
+$("#productlist").append(listAddition);
+}
+
+
+/* API CALL */
 
 function getSearchInformation() {
   /* Takes searched item and inputs into API, gets first 21 products */
-  let groceryRequest = "https://api.spoonacular.com/food/products/search" + spoonRequest + "&query=" + searchQuery + "&number=21";
+  let groceryRequest = "https://api.spoonacular.com/food/products/search" + spoonRequest + "&query=" + searchQuery + "&number=3";
+
   fetch(groceryRequest)
   .then(function (response) {
     return response.json();
@@ -111,79 +119,35 @@ function getSearchInformation() {
 
   .then(function (response) {
    /* Takes responses and picks the IDs out of the response to get their information */
-  
-   let productID = response.products[0].id;
+  for (let i = 0; i < response.products.length; i++) {
+   let productID = response.products[i].id;
    let getInfo = "https://api.spoonacular.com/food/products/" + productID + spoonRequest;
+
    fetch(getInfo)
    .then(function(response) {
      return response.json();
    })
-    
+
    .then(function(response) {
     /* Takes product information image type and image */
     let productTitle = response.title;
     let imgType = response.imageType;
     let getIMG = "https://spoonacular.com/productImages/" + productID + "-90x90." + imgType;
-    fetch(getIMG)
-    .then(function() {
+
     /* puts information together to form card */
 
       let productCard = 
-      `<img id="responsive-img" src="${getIMG}">
+      `<div class="card-panel hoverable col s3 product">
+      <img id="responsive-img class="pimg" src="${getIMG}">
       <ul>
-      <li><h5>${productTitle}</h5></li>
+      <li><h6 id="productT">${productTitle}</h6></li>
       </ul>
+      </div>
       `;
-
-      $("#productimg").html(productCard);
-      
+      let div = $("<div>")
+      div.append(productCard)
+      $("#productimg").append(div)
     })
-  })
+  }
 })
 }
-/* API CALL */
-
-
-/*
-PSEUDO CODE
->user searches
-
->get information from api
--information needed:
-image
-name
-price
-
-to get my image i need the product id
-to get the name, i can just search
-to get price i need product id
-
-first, search name
-
-get title & id of 21 products
-
-save those titles to storage separately
-
-take product ids
-request price
-
-input product id to 
-request img
-
-take image, name, price information
-
-put into card format for 21 products
-
-display on site
-
- getProductImg();
-
-    let productCard =
-    `
-    <img id="productimg responsive-img" src="{}">
-    <h6>${response.title};</h6>
-    `;
-
-    $("#name").html(productCard);
-
-*/
