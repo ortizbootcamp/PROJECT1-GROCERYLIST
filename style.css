@@ -1,27 +1,4 @@
-/* Log-In Page*/
-/*h2 {
-  color: green;
-}
 
-body {
-  background: white;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-}
-
-label {
-  color: green;
-  font-weight: bold;
-  display: inline-block;
-  font-size: 18px;
-}
-
-input[type="text"],
-input[type="password"] {
-  width: 100%;
-}*/
-
-/*3) Recipe suggestion in Navbar
-    -based on what items you have in your list*/
 .dropdown .dropbtn {
   font-size: 16px;
   border: none;
@@ -52,6 +29,7 @@ input[type="password"] {
   display: block;
   text-align: left;
 }
+
 .recipe-button {
   position: relative;
 }
@@ -62,6 +40,8 @@ input[type="password"] {
   height: 500px;
   overflow-y: scroll;
 }
+  
+
 .card-panel {
   margin: 10px;
   height: 200px;
@@ -70,4 +50,14 @@ input[type="password"] {
 
 #responsive-img {
   padding: 5px;
+}
+  #recipe-button {
+  position: relative;
+}
+#recipe {
+  position: absolute;
+  top: 64px;
+  left: 5px;
+  height: 500px;
+  overflow-y: scroll;
 }

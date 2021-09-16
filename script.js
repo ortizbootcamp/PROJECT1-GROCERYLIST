@@ -1,4 +1,5 @@
 
+
 //recipe API code
 
 const settings = {
@@ -19,6 +20,7 @@ $(document).ready(function(){
 $(document).ready(function(){
   $(".dropdown-button").dropdown();
 })
+
 
   $(document).ready(function(){
     $('input.autocomplete').autocomplete({
@@ -64,13 +66,10 @@ $(document).ready(function(){
     });
   });
 
-$(document).ready(function () {
-  $(".sidenav").sidenav();
-});
+
 function myFunction() {
   document.getElementById("recipe-button").classList.toggle("show");
 }
-
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function (e) {
@@ -82,14 +81,12 @@ window.onclick = function (e) {
   }
 };
 
+
 var button = document.getElementById("recipe-button");
 button.addEventListener("click", function () {
   //add funtion to grab users choices//
-  var randomNum = Math.floor(Math.random() * 1483) + 1;
   fetch(
-    "https://tasty.p.rapidapi.com/recipes/list?from=" +
-      randomNum +
-      "&size=10&tags=under_30_minutes", // from = what index to start at | size = recipes returned max: 40 |
+    "https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&tags=under_30_minutes",
     settings
   )
     .then(function (result) {
@@ -97,13 +94,6 @@ button.addEventListener("click", function () {
     })
     .then(function (result) {
       console.log(result);
-
-      var randomPicture = [];
-      for (let i = 0; i < 10; i++) {
-        randomPicture.push(result.results[i]);
-        console.log(result.results[i].slug); // "tasty.co/recipes/" + slug <= needs to go in your anchor tag
-      }
-      console.log(randomPicture);
       //all logic for adding recipes to screen
       var container = document.createElement("div");
       container.id = "recipe";
@@ -131,7 +121,6 @@ button.addEventListener("click", function () {
     });
 });
 
-
 /* Product API Reference Stuff */
 
 var searchTerm = $(".search-input").val();
@@ -153,7 +142,6 @@ $(".searchbtn").on("click", function (event) {
 $(".searchbtn").click(function() {
   $(".product").remove();
 })
-
 
 
 //local storage for current grocery list
@@ -228,7 +216,7 @@ function getSearchInformation() {
 
       let productCard = 
       `<div class="card-panel hoverable col s3 product">
-      <img id="responsive-img class="pimg" src="${getIMG}">
+      <img id="responsive-img" class="pimg product" src="${getIMG}">
       <ul>
       <li><h6 id="productT">${productTitle}</h6></li>
       </ul>
@@ -242,27 +230,7 @@ function getSearchInformation() {
 })
 }
 
-//local storage for current grocery list
-/*grocery items*/
-var item = ""
 
-var groceryList = (function(){
-  var groceryList = []
-
-  function item(name,quantity) {
-    this.name = name
-    this.quantity = quantity
-  }
-  function save () {
-    localStorage.setItem('groceryList', JSON.stringify(groceryList))
-  }
-
-  function load() {
-    groceryList =   JSON.parse(localStorage.getItem(groceryList)) || []
-  }
-load 
-
-})
 var input = document.getElementById("autocomplete-input");
 input.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
