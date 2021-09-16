@@ -1,4 +1,27 @@
-var acInput = $(".autocomplete-input").text();
+
+
+//recipe API code
+
+const settings = {
+  async: true,
+  crossDomain: true,
+  url: "https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&tags=under_30_minutes",
+  method: "GET",
+  headers: {
+    "x-rapidapi-host": "tasty.p.rapidapi.com",
+    "x-rapidapi-key": "38dcaf69bamsh29728cd49878c87p1d3766jsn1c94143a9ed8",
+  },
+};
+
+//button click to go to recipe puppy
+$(document).ready(function(){
+    $('.sidenav').sidenav()
+});
+$(document).ready(function(){
+  $(".dropdown-button").dropdown();
+})
+
+
   $(document).ready(function(){
     $('input.autocomplete').autocomplete({
       data: {
@@ -37,15 +60,13 @@ var acInput = $(".autocomplete-input").text();
         "Candy": null,
         "Cereal": null,
         "Eggs": null,
-        "Cashews": null,
+        "Nuts": null,
       },
       limit: 3,
     });
   });
 
-$(document).ready(function () {
-  $(".sidenav").sidenav();
-});
+
 function myFunction() {
   document.getElementById("recipe-button").classList.toggle("show");
 }
@@ -60,25 +81,15 @@ window.onclick = function (e) {
   }
 };
 
-//recipe API code
-
-const settings = {
-  async: true,
-  crossDomain: true,
-  url: "https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&tags=under_30_minutes",
-  method: "GET",
-  headers: {
-    "x-rapidapi-host": "tasty.p.rapidapi.com",
-    "x-rapidapi-key": "38dcaf69bamsh29728cd49878c87p1d3766jsn1c94143a9ed8",
-  },
-};
-
 
 var button = document.getElementById("recipe-button");
 button.addEventListener("click", function () {
   //add funtion to grab users choices//
+  var randomNum = Math.floor(Math.random() * 1483) + 1;
   fetch(
-    "https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&tags=under_30_minutes",
+    "https://tasty.p.rapidapi.com/recipes/list?from=" +
+      randomNum +
+      "&size=10&tags=under_30_minutes", // from = what index to start at | size = recipes returned max: 40 |
     settings
   )
     .then(function (result) {
@@ -86,6 +97,12 @@ button.addEventListener("click", function () {
     })
     .then(function (result) {
       console.log(result);
+      var randomPicture = [];
+      for (let i = 0; i < 10; i++) {
+        randomPicture.push(result.results[i]);
+        console.log(result.results[i].slug); // "tasty.co/recipes/" + slug <= needs to go in your anchor tag
+      }
+      console.log(randomPicture);
       //all logic for adding recipes to screen
       var container = document.createElement("div");
       container.id = "recipe";
@@ -116,8 +133,8 @@ button.addEventListener("click", function () {
 /* Product API Reference Stuff */
 
 var searchTerm = $(".search-input").val();
-var spoonRequest = "?apiKey=f2cc363c131d41018e9a7a7783419309";
-var genSearch = "https://api.spoonacular.com/food/products/search?" + spoonRequest + "&query=" + searchTerm + "&number=21";
+var spoonRequest = "?apiKey=e1db73aa4c2649c49d537bb9ba5edfc6";
+var genSearch = "https://api.spoonacular.com/food/products/search?" + spoonRequest + "&query=" + searchTerm + "&number=3";
 var foodID = "";
 var foodImageRequest = "https://spoonacular.com/productImages/" + foodID + "-90x90.png";
 
@@ -127,6 +144,7 @@ $(".searchbtn").on("click", function (event) {
   getSearchInformation(event);
   event.preventDefault();
 })
+
 
 /*clear search results when another search is done*/
 
@@ -220,3 +238,12 @@ function getSearchInformation() {
   }
 })
 }
+
+
+var input = document.getElementById("autocomplete-input");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("searchbtn").click();
+  }
+});
