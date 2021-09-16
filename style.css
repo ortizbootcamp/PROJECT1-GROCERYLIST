@@ -62,3 +62,12 @@ input[type="password"] {
   height: 500px;
   overflow-y: scroll;
 }
+.card-panel {
+  margin: 10px;
+  height: 200px;
+  width: fit-content;
+}
+
+#responsive-img {
+  padding: 5px;
+}

@@ -136,7 +136,7 @@ button.addEventListener("click", function () {
 
 var searchTerm = $(".search-input").val();
 var spoonRequest = "?apiKey=f2cc363c131d41018e9a7a7783419309";
-var genSearch = "https://api.spoonacular.com/food/products/search?" + spoonRequest + "&query=" + searchTerm + "&number=21";
+var genSearch = "https://api.spoonacular.com/food/products/search?" + spoonRequest + "&query=" + searchTerm + "&number=3";
 var foodID = "";
 var foodImageRequest = "https://spoonacular.com/productImages/" + foodID + "-90x90.png";
 
@@ -146,9 +146,6 @@ $(".searchbtn").on("click", function (event) {
   getSearchInformation(event);
   event.preventDefault();
 })
-
-
-/* API CALL */
 
 
 /*clear search results when another search is done*/
@@ -200,6 +197,7 @@ $("#productlist").append(listAddition);
 
 
 /* API CALL */
+
 function getSearchInformation() {
   /* Takes searched item and inputs into API, gets first 21 products */
   let groceryRequest = "https://api.spoonacular.com/food/products/search" + spoonRequest + "&query=" + searchQuery + "&number=3";
@@ -239,10 +237,8 @@ function getSearchInformation() {
       let div = $("<div>")
       div.append(productCard)
       $("#productimg").append(div)
-  })
-
+    })
   }
-  
 })
 }
 
